@@ -11,22 +11,25 @@ class Mouse:
     def __init__(self):
         self._Width = wapi.GetSystemMetrics(0)
         self._Height = wapi.GetSystemMetrics(1)
-        wapi.SetCursorPos((self.Width/2,self.Height/2))
-        print('Executa o INIT')
+        wapi.SetCursorPos((int(self._Width/2),int(self._Height/2)))
+        print("Executa o INIT")
         
-    def SetPosAbsolut(Ax,Ay):
+    def SetPosAbsolut(self,Ax,Ay):
         wapi.SetCursorPos((Ax,Ay))
     
-    def SetPosIncremental(Ix,Iy):
+    def SetPosIncremental(self,Ix,Iy):
         mouse_Pos_x = wapi.GetCursorPos()[0]
         mouse_Pos_y = wapi.GetCursorPos()[1]
-        wapi.SetCursorPos((mouse_Pos_x - Ix,mouse_Pos_y - Iy))
+        wapi.SetCursorPos((mouse_Pos_x + Ix,mouse_Pos_y - Iy))
         
-    def GetMousePos():
-        return wapi.GetCursorPos()
+    def GetMousePosX(self):
+        return wapi.GetCursorPos()[0]
         
-    def GetWidth():
+    def GetMousePosY(self):
+        return wapi.GetCursorPos()[1]
+        
+    def GetWidth(self):
         return wapi.GetSystemMetrics(0)   
     
-    def GetHeight():
+    def GetHeight(self):
         return wapi.GetSystemMetrics(1)
